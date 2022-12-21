@@ -43,6 +43,35 @@ OPTIMADE Python tools
 
 </div>
 
+## Salsa Dancing Molecules fork
+
+This is a fork of the OPTIMADE python tools that bundles an example
+configuration together with simulation results from the Salsa Dancing
+Molecules simulation project.
+
+To use this data, a mongodb database instance is needed. If the
+mongodb server is running on the local host, the project data can be
+loaded by doing
+
+	mongoimport --jsonArray --db optimade --collection structures --file salsa_data/structures.json
+
+Install the server python requirements
+
+	pip install -r requirements-server.txt
+	pip install -r requirements.txt
+
+To run the server, execute
+
+	./run.sh index
+
+It should now be possible to query data from http://localhost:5001/.
+
+For a real publication, it will be necessary to get a real domain
+name and custom data field prefix and update the configuration file
+`optimade_config.json` accordingly.
+
+## About OPTIMADE
+
 The aim of [OPTIMADE](https://optimade.org) is to develop a common API, compliant with the [JSON:API 1.0](http://jsonapi.org/format/1.0/) specification.
 This is to enable interoperability among databases that serve crystal structures and calculated properties of existing and hypothetical materials.
 
