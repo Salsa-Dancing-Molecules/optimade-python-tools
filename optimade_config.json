@@ -1,7 +1,10 @@
 {
     "debug": false,
-    "default_db": "test_server",
+    "default_db": "optimade",
+    "database_backend": "mongodb",
+    "insert_test_data": false,
     "base_url": "http://localhost:5000",
+    "structures_collection": "structures",
     "implementation": {
         "name": "Example implementation",
         "source_url": "https://github.com/Materials-Consortia/optimade-python-tools",
@@ -9,30 +12,30 @@
         "maintainer": {"email": "dev@optimade.org"}
     },
     "provider": {
-        "name": "Example provider",
-        "description": "Provider used for examples, not to be assigned to a real database",
+        "name": "Salsa Dancing Molecules provider",
+        "description": "Example configuration for Salsa-Dancing-Molecules data",
         "prefix": "exmpl",
         "homepage": "https://example.com"
     },
     "index_base_url": "http://localhost:5001",
     "provider_fields": {
         "structures": [
-            "band_gap",
-            {"name": "chemsys", "type": "string", "description": "A string representing the chemical system in an ordered fashion"}
+            "ensemble",
+            "potential",
+            "kim_model",
+            "initial_temperature",
+            "target_temperature",
+            "volume_scale",
+            "lattice_constant",
+            "bulk_modulus",
+            "lindeman_criterion",
+            "msd_average",
+            "self_diffusion_coefficient",
+            "heat_capacity",
+            "debye_temperature",
+            "cohesive_energy",
+            "equilibrium_warning",
+            "debye_warning"
         ]
-    },
-    "aliases": {
-        "structures": {
-            "id": "task_id",
-            "immutable_id": "_id",
-            "chemical_formula_descriptive": "pretty_formula",
-            "chemical_formula_reduced": "pretty_formula",
-            "chemical_formula_anonymous": "formula_anonymous"
-        }
-    },
-    "length_aliases": {
-        "structures": {
-            "chemsys": "nelements"
-        }
     }
 }

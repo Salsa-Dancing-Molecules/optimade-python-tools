@@ -21,7 +21,7 @@ from optimade import __api_version__, __version__
 from optimade.server.exception_handlers import OPTIMADE_EXCEPTIONS
 from optimade.server.logger import LOGGER
 from optimade.server.middleware import OPTIMADE_MIDDLEWARE
-from optimade.server.routers import index_info, links, versions
+from optimade.server.routers import index_info, links, versions, structures
 from optimade.server.routers.utils import BASE_URL_PREFIXES, JSONAPIResponse
 
 if config_warnings:
@@ -110,13 +110,12 @@ for exception, handler in OPTIMADE_EXCEPTIONS:
     app.add_exception_handler(exception, handler)
 
 # Add all endpoints to unversioned URL
-for endpoint in (index_info, links, versions):
+for endpoint in (index_info, links, versions, structures):
     app.include_router(endpoint.router)
-
 
 def add_major_version_base_url(app: FastAPI):
     """Add mandatory endpoints to `/vMAJOR` base URL."""
-    for endpoint in (index_info, links):
+    for endpoint in (index_info, links, structures):
         app.include_router(endpoint.router, prefix=BASE_URL_PREFIXES["major"])
 
 
